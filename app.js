@@ -7,12 +7,15 @@ const userRouter = require('./Routes/userRoutes');
 const app = express();
 
 //#region Middleware
+if(process.env.NODE_ENV === 'development'){
+    //Third-Party Middleware
+    app.use(morgan('dev'));
 
-//Third-Party Middleware
-app.use(morgan('dev'));
+}
 
 //Adding middleware from express 
 app.use(express.json());
+app.use(express.static(`${__dirname}/public`));
 
 //Adding custom middleware
 //Depending when we call this function will determine its execution.
