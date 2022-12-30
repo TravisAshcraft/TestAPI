@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const Tour = require('./../Modules/tourModule');
 /**
  * Inside each controller we have specific functionality for each endpoint.
  * Whether it is getting all the data at once or by ID.

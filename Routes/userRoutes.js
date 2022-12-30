@@ -1,5 +1,7 @@
 const express = require('express');
 const userController = require('./../Controllers/userController');
+const authController = require('./../Controllers/authController');
+
 const router = express.Router();
 
 /* 
@@ -8,7 +10,10 @@ const router = express.Router();
 * These are kept in the Controllers folder
 */
 
-//User routes    
+router
+    .route('/signup')
+    .post(authController.signUp);
+  
 router
     .route('/')
     .get(userController.GetAllUsers)
