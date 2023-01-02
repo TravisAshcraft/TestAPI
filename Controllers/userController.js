@@ -1,3 +1,6 @@
+const User = require('./../Modules/userModule');
+const catchAsync = require('./../Utils/catchAsync');
+
 /**
  * Inside each controller we have specific functionality for each endpoint.
  * Whether it is getting all the data at once or by ID.
@@ -6,10 +9,15 @@
  */
 
 //User Route Handlers
-exports.GetAllUsers = ((req, res) => {
-    res.status(500).json({
-        status: 'error',
-        message: 'This route is not yet defined!'
+exports.GetAllUsers = catchAsync(async (req, res, next) => {
+    const users = await User.find();
+
+    res.status(200).json({
+        status: 'success',
+        results: users.length,
+        data: {
+            users
+        }
     });
 });
 
